@@ -1,0 +1,247 @@
+'''
+A = int(input('输入数字：'))
+if A >= 80:
+   print('优秀')
+else:
+    if A >= 70:
+        print('良好')
+    else:
+        if A >= 60:
+            print('及格')
+        else:
+            print('不及格')
+            
+'''
+
+# 优化
+'''
+if A >= 80:
+    print('优秀')
+elif A >= 70:
+    print('良好')
+elif A >= 60:
+    print('及格')
+else:
+    print('不及格')
+
+
+'''
+
+
+
+#一元二次方程
+'''
+import math
+
+ch = ''
+while ch != 'q':
+    a = float(input('输入 a：'))
+    b = float(input('输入 b：'))
+    c = float(input('输入 c：'))
+    if a != 0:
+        delt = b ** 2 -4 * a * c
+        if delt < 0:
+            print('无解')
+        elif delt == 0:
+            s = -b/(2 * a)
+            print('s:', s)
+        else:
+            root = math.sqrt(delt)
+            s1 = (-b + root) / (2 * a)
+            s2 = (b + root) / (2 * a)
+            print('s1' , s1)
+            print('s2' , s2)
+    ch = input('Quit:')
+ '''
+
+
+#篮球问题
+'''
+points = int(input('leading ponits: '))
+has_ball = input('The leading team has ball (yes/no)')
+seconds = int(input('The remaining sedcongs: '))
+
+points -= 3
+if has_ball == 'yes':
+    points += 0.5
+else:
+    ponints -= 0.5
+if points < 0:
+    points = 0
+
+points **= 2
+
+if points > seconds:
+    print('Safe')
+else:
+    print('No safe')
+'''
+
+
+
+
+'''
+i = 1
+s = 0
+
+while i <= 3:
+    i += 1
+    s += i
+print(s)
+'''
+'''
+count = 0
+i = 0
+while count < 10:
+    i += 1
+    print(i)
+'''
+
+
+#求常数e
+'''
+import math
+
+e = 1
+
+for i in range(1, 1000):
+    e += 1/ math.factorial(i)
+
+print(e)
+'''
+#优化
+'''
+e = 1
+factorial = 1
+
+for i in range(1,100):
+    factorial *= i
+    e += 1 / factorial
+
+print(e)
+'''
+'''
+ch = ''
+while ch == '':
+    n = int(input('整数：'))
+    while n != 1:
+        if  n % 2 == 0:
+            n /= 2
+        else:
+            n = 3 * n + 1
+        print(n)
+    ch = input('Quit:')
+'''
+
+
+'''
+for c in range(36):
+    for r in range(36):
+        if 2 * c + 4 * r == 94 and c + r == 35:
+            print('c:', c)
+            print('r:', r)
+            print
+'''
+
+
+
+
+#判断回文数与素数
+'''
+num = int(input('整数：'))
+num_p = 0
+num_t = num
+
+is_palin = False
+is_prime = False
+
+while num_t != 0:
+    num_p = num_p * 10 + num_t % 10
+    num_t = num_t / 10
+
+if num == num_p:
+  is_palin = True
+
+for i in range(2,num):
+    if num % i == 0:
+        break
+else:
+    is_prime = True
+
+if is_palin and is_prime:
+    print('ok')
+else:
+    print('no')
+
+'''
+#优化
+'''
+ch = ''
+while ch != 'q':
+    num = int(input('整数：'))
+
+    def is_palin(num):
+        num_p = 0
+        num_t = num
+        while num_t != 0:
+            num_p = num_p * 10 + num_t % 10
+            num_t = num_t / 10
+
+        if num == num_p:
+          return True
+        else:
+            return False
+        
+    def is_prime(num):
+        for i in range(2,num):
+            if num % i == 0:
+                return True
+        return True
+
+
+    if is_palin(num) and is_prime(num):
+        print('ok')
+    else:
+        print('no')
+
+    ch = input('Quit:')
+'''
+
+
+'''
+#日历
+def is_leap_year(year):
+    if year % 4 ==0 and year % 100 == 0 or year % 400 == 0:
+        return True
+    else:
+        return False
+
+def get_num_of_day_in_month(year,month):
+    if month in (1, 3, 5, 7, 8, 10, 12):
+        return 31
+    elif month in (4, 6, 9, 11):
+        return 30
+    elif is_leap_year(year):
+        return 29
+    else:
+        return 28
+
+def get_total_num_of_day(year,month):
+    days = 0 
+    for y in range(1800,year):
+        if is_leap_year(y):
+            days += 366
+        else:
+            days += 365
+
+        for m in range(1, month):
+            days += get_num_of_day_in_month(year, m)
+
+    return days
+
+def get_start_day(year,month):
+    return (3 + get_total_num_of_day(year, month)) % 7
+
+print(get_start_day(2033,12))
+'''
+
